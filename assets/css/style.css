@@ -2767,7 +2767,7 @@ hr {
     top: 0;
     width: 101%;
     height: 101%;
-    background: #FF1616;
+    background: #000;
     z-index: 1;
     border-radius: 5px;
     transition: transform 0.5s;
@@ -2932,23 +2932,23 @@ hr {
 
 .boxed-btn {
     background: #fff;
-    color: #FF1616 !important;
+    color: #9498A7 !important;
     display: inline-block;
     padding: 18px 44px;
     font-family: "Playfair Display", serif;
     font-size: 14px;
     font-weight: 400;
     border: 0;
-    border: 1px solid #FF1616;
+    border: 1px solid #9498A7;
     text-align: center;
-    color: #FF1616;
+    color: #9498A7;
     cursor: pointer
 }
 
 .boxed-btn:hover {
-    background: #FF1616;
+    background: #000;
     color: #fff !important;
-    border: 1px solid #FF1616
+    border: 1px solid #9498A7
 }
 
 .boxed-btn:focus {
@@ -2960,7 +2960,8 @@ hr {
 }
 
 .boxed-btn2 {
-    padding: 4px 20px !important
+    padding: 4px 20px !important;
+    
 }
 
 .full-menu {
@@ -3281,7 +3282,7 @@ hr {
 }
 
 .header-bottom .main-menu ul li:hover>a {
-    color: #FF1616
+    color: #000
 }
 
 .header-bottom .main-menu ul ul.submenu {
@@ -3316,7 +3317,6 @@ hr {
 }
 
 .header-bottom .main-menu ul ul.submenu>li>a:hover {
-    color: #FF1616;
     background: none;
     letter-spacing: 0.5px
 }
@@ -3916,7 +3916,7 @@ hr {
 .best-selling .properties .properties-card .properties-caption .properties-footer .price span {
     cursor: pointer;
     font-weight: 500;
-    color: #FF1616;
+    color: #9498A7;
     font-size: 22px
 }
 
@@ -3925,7 +3925,7 @@ hr {
 }
 
 .best-selling .properties:hover .properties-caption h3 a {
-    color: #FF1616
+    color: #9498A7
 }
 
 .selling-active button.slick-arrow {
@@ -3951,7 +3951,7 @@ hr {
 }
 
 .selling-active button.slick-arrow i:hover {
-    color: #FF1616
+    color: #9498A7
 }
 
 .selling-active button.slick-prev {
@@ -4941,7 +4941,7 @@ hr {
 }
 
 .category-listing .single-listing .select-Categories .container input:checked~.checkmark {
-    background-color: #FF1616;
+    background-color: #000000;
     border: 2px solid transparent
 }
 
@@ -6245,7 +6245,7 @@ hr {
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    background: #FF1616;
+    background: #000000;
     display: inline-block;
     position: absolute;
     right: 3px;
@@ -7525,7 +7525,7 @@ hr {
 }
 
 .submit-btn3 {
-    background: #FF1616;
+    background: #999999;
     height: 60px;
     padding: 10px 43px;
     border: 0;
@@ -8190,7 +8190,7 @@ hr {
     left: 10px;
     display: block;
     color: #fff;
-    background-color: #FF1616;
+    background-color: #000;
     padding: 8px 15px;
     border-radius: 5px
 }
@@ -8390,7 +8390,7 @@ hr {
 }
 
 .blog_right_sidebar .tag_cloud_widget ul li a:hover {
-    background: #FF1616;
+    background: #000;
     color: #fff !important;
     -webkit-text-fill-color: #fff;
     text-decoration: none;
