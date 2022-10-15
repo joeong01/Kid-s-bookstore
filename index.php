@@ -15,9 +15,8 @@
                                 <div class="row justify-content-center">
                                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
                                         <div class="hero-caption text-center">
-                                            <span data-animation="fadeInUp" data-delay=".2s">Comic</span>
-                                            <h1 data-animation="fadeInUp" data-delay=".4s">The History<br> of Phipino</h1>
-                                            <a href="#" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                            <h1 data-animation="fadeInUp" data-delay=".4s">Science</h1>
+                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories=101" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
                                         </div>
                                     </div>
                                 </div>
@@ -29,9 +28,8 @@
                                 <div class="row justify-content-center">
                                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
                                         <div class="hero-caption text-center">
-                                            <span data-animation="fadeInUp" data-delay=".2s">Fiction</span>
-                                            <h1 data-animation="fadeInUp" data-delay=".4s">The History<br> of Phipino</h1>
-                                            <a href="#" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                            <h1 data-animation="fadeInUp" data-delay=".4s">Plant</h1>
+                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories=102" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
                                         </div>
                                     </div>
                                 </div>
@@ -43,9 +41,32 @@
                                 <div class="row justify-content-center">
                                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
                                         <div class="hero-caption text-center">
-                                            <span data-animation="fadeInUp" data-delay=".2s">Science Fiction</span>
-                                            <h1 data-animation="fadeInUp" data-delay=".4s">The History<br> of Phipino</h1>
-                                            <a href="#" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                            <h1 data-animation="fadeInUp" data-delay=".4s">Language</h1>
+                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories=103" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-slider slider-height slider-bg4 d-flex align-items-center">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
+                                        <div class="hero-caption text-center">
+                                            <h1 data-animation="fadeInUp" data-delay=".4s">Comic</h1>
+                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories=104" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-slider slider-height slider-bg5 d-flex align-items-center">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
+                                        <div class="hero-caption text-center">
+                                            <h1 data-animation="fadeInUp" data-delay=".4s">Animal</h1>
+                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories=105" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
                                         </div>
                                     </div>
                                 </div>
@@ -71,118 +92,34 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="selling-active">
+                        <?php
+                            $BestSale = "SELECT * FROM books INNER JOIN tags ON books.tagsID = tags.tagsID WHERE tags.tagsName = 'Best Sale'";
+                            $QueryRun = mysqli_query($con,$BestSale);
+
+                            foreach($QueryRun as $item){
+                        ?>
                         <div class="properties pb-20">
                             <div class="properties-card">
                                 <div class="properties-img">
-                                    <a href="book-details.html"><img src="assets/img/gallery/best_selling1.jpg" alt=""></a>
+                                    <?php echo "
+                                        <a href='http://localhost/Kid-s-bookstore/book-details.php?id=$item[bookID]'>";
+                                            echo '<img height=300px width=200px src= "data:image/jpeg;base64,'. base64_encode($item['bookImage']).'"/>';
+                                        echo "</a>";
+                                    ?>
                                 </div>
                                 <div class="properties-caption">
-                                    <h3><a href="book-details.html">Moon Dance</a></h3>
-                                    <p>J. R Rain</p>
-                                    <div class="properties-footer d-flex justify-content-between align-items-center">
-                                        <div class="price">
-                                            <span>$50</span>
+                                    <?php echo "
+                                    <p>$item[bookName]</p>
+                                    <div class='properties-footer d-flex justify-content-between align-items-center'>
+                                        <div class='price'>
+                                            <span>RM $item[price]</span>
                                         </div>
                                     </div>
+                                    " ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="properties pb-20">
-                            <div class="properties-card">
-                                <div class="properties-img">
-                                    <a href="book-details.html"><img src="assets/img/gallery/best_selling2.jpg" alt=""></a>
-                                </div>
-                                <div class="properties-caption">
-                                    <h3><a href="book-details.html">Moon Dance</a></h3>
-                                    <p>J. R Rain</p>
-                                    <div class="properties-footer d-flex justify-content-between align-items-center">
-                                        <div class="price">
-                                            <span>$50</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="properties pb-20">
-                            <div class="properties-card">
-                                <div class="properties-img">
-                                    <a href="book-details.html"><img src="assets/img/gallery/best_selling3.jpg" alt=""></a>
-                                </div>
-                                <div class="properties-caption">
-                                    <h3><a href="book-details.html">Moon Dance</a></h3>
-                                    <p>J. R Rain</p>
-                                    <div class="properties-footer d-flex justify-content-between align-items-center">
-                                        <div class="price">
-                                            <span>$50</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="properties pb-20">
-                            <div class="properties-card">
-                                <div class="properties-img">
-                                    <a href="book-details.html"><img src="assets/img/gallery/best_selling4.jpg" alt=""></a>
-                                </div>
-                                <div class="properties-caption">
-                                    <h3><a href="book-details.html">Moon Dance</a></h3>
-                                    <p>J. R Rain</p>
-                                    <div class="properties-footer d-flex justify-content-between align-items-center">>
-                                        <div class="price">
-                                            <span>$50</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="properties pb-20">
-                            <div class="properties-card">
-                                <div class="properties-img">
-                                    <a href="book-details.html"><img src="assets/img/gallery/best_selling5.jpg" alt=""></a>
-                                </div>
-                                <div class="properties-caption">
-                                    <h3><a href="book-details.html">Moon Dance</a></h3>
-                                    <p>J. R Rain</p>
-                                    <div class="properties-footer d-flex justify-content-between align-items-center">
-                                        <div class="price">
-                                            <span>$50</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="properties pb-20">
-                            <div class="properties-card">
-                                <div class="properties-img">
-                                    <a href="book-details.html"><img src="assets/img/gallery/best_selling6.jpg" alt=""></a>
-                                </div>
-                                <div class="properties-caption">
-                                    <h3><a href="book-details.html">Moon Dance</a></h3>
-                                    <p>J. R Rain</p>
-                                    <div class="properties-footer d-flex justify-content-between align-items-center">
-                                        <div class="price">
-                                            <span>$50</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="properties pb-20">
-                            <div class="properties-card">
-                                <div class="properties-img">
-                                    <a href="book-details.html"><img src="assets/img/gallery/best_selling4.jpg" alt=""></a>
-                                </div>
-                                    <div class="properties-caption">
-                                    <h3><a href="book-details.html">Moon Dance</a></h3>
-                                    <p>J. R Rain</p>
-                                    <div class="properties-footer d-flex justify-content-between align-items-center">
-                                        <div class="price">
-                                            <span>$50</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -190,136 +127,51 @@
     </div>
     <hr style="height:0px;border-width:0px;color:transparent;">
     <!-- Latest-items Start -->
-    <section class="our-client section-padding best-selling section-bg">
+    <div class="best-selling section-bg">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-xl-5 col-lg-5 col-md-12">
-                    <!-- Section Tittle -->
+                <div class="col-xl-7 col-lg-8">
                     <div class="section-tittle text-center mb-55">
-                        <h2>Latest Published items</h2>
-                    </div> 
+                        <h2>New Release</h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <!-- Nav Card -->
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-one" role="tabpanel" aria-labelledby="nav-one-tab">
-                    <!-- Tab 1 -->  
-                    <div class="row">
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                            <div class="properties pb-30">
-                                <div class="properties-card">
-                                    <div class="properties-img">
-                                        <a href="book-details.html"><img src="assets/img/gallery/best_selling7.jpg" alt=""></a>
-                                    </div>
-                                    <div class="properties-caption properties-caption2">
-                                        <h3><a href="book-details.html">Moon Dance</a></h3>
-                                        <p>J. R Rain</p>
-                                        <div class="properties-footer d-flex justify-content-between align-items-center">
-                                            <div class="price">
-                                                <span>$50</span>
-                                            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="selling-active">
+                        <?php
+                            $BestSale = "SELECT * FROM books INNER JOIN tags ON books.tagsID = tags.tagsID WHERE tags.tagsName = 'New Release'";
+                            $QueryRun = mysqli_query($con,$BestSale);
+
+                            foreach($QueryRun as $item){
+                        ?>
+                        <div class="properties pb-20">
+                            <div class="properties-card">
+                                <div class="properties-img">
+                                    <?php echo "
+                                        <a href='http://localhost/Kid-s-bookstore/book-details.php?id=$item[bookID]'>";
+                                            echo '<img height=300px width=200px src= "data:image/jpeg;base64,'. base64_encode($item['bookImage']).'"/>';
+                                        echo "</a>";
+                                    ?>
+                                </div>
+                                <div class="properties-caption">
+                                    <?php echo "
+                                    <p>$item[bookName]</p>
+                                    <div class='properties-footer d-flex justify-content-between align-items-center'>
+                                        <div class='price'>
+                                            <span>RM $item[price]</span>
                                         </div>
                                     </div>
+                                    " ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                            <div class="properties pb-30">
-                                <div class="properties-card">
-                                    <div class="properties-img">
-                                        <a href="book-details.html"><img src="assets/img/gallery/best_selling8.jpg" alt=""></a>
-                                    </div>
-                                    <div class="properties-caption properties-caption2">
-                                        <h3><a href="book-details.html">Moon Dance</a></h3>
-                                        <p>J. R Rain</p>
-                                        <div class="properties-footer d-flex justify-content-between align-items-center">
-                                            <div class="price">
-                                                <span>$50</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                            <div class="properties pb-30">
-                                <div class="properties-card">
-                                    <div class="properties-img">
-                                        <a href="book-details.html"><img src="assets/img/gallery/best_selling6.jpg" alt=""></a>
-                                    </div>
-                                    <div class="properties-caption properties-caption2">
-                                        <h3><a href="book-details.html">Moon Dance</a></h3>
-                                        <p>J. R Rain</p>
-                                        <div class="properties-footer d-flex justify-content-between align-items-center">
-                                            <div class="price">
-                                                <span>$50</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                            <div class="properties pb-30">
-                                <div class="properties-card">
-                                    <div class="properties-img">
-                                        <a href="book-details.html"><img src="assets/img/gallery/best_selling4.jpg" alt=""></a>
-                                    </div>
-                                    <div class="properties-caption properties-caption2">
-                                        <h3><a href="book-details.html">Moon Dance</a></h3>
-                                        <p>J. R Rain</p>
-                                        <div class="properties-footer d-flex justify-content-between align-items-center">
-                                            <div class="price">
-                                                <span>$50</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                            <div class="properties pb-30">
-                                <div class="properties-card">
-                                    <div class="properties-img">
-                                        <a href="book-details.html"><img src="assets/img/gallery/best_selling9.jpg" alt=""></a>
-                                    </div>
-                                    <div class="properties-caption properties-caption2">
-                                        <h3><a href="book-details.html">Moon Dance</a></h3>
-                                        <p>J. R Rain</p>
-                                        <div class="properties-footer d-flex justify-content-between align-items-center">
-                                            <div class="price">
-                                                <span>$50</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                            <div class="properties pb-30">
-                                <div class="properties-card">
-                                    <div class="properties-img">
-                                        <a href="book-details.html"><img src="assets/img/gallery/best_selling2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="properties-caption properties-caption2">
-                                        <h3><a href="book-details.html">Moon Dance</a></h3>
-                                        <p>J. R Rain</p>
-                                        <div class="properties-footer d-flex justify-content-between align-items-center">
-                                            <div class="price">
-                                                <span>$50</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     <!-- Latest-items End -->
 </main>
 <?php
