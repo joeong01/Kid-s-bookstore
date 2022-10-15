@@ -31,7 +31,7 @@
                                         <ul id="navigation">
                                             <li><a href="index.html">Home</a></li>
                                             <li><a href="bookCategory.php">Book Category</a></li>
-                                            <li><a href="about.html">About</a></li>
+                                            <li><a href="bookdescription.php">Edit Book Details</a></li>
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
                                                     <li><a href="login.html">login</a></li>

@@ -54,7 +54,7 @@ if(isset($_POST['submit']))	{
 		echo "<script>alert('Category name cannot be blank.');</script>";
 	}
 }
-	
+
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
