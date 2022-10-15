@@ -22,40 +22,46 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
+    <!-- header end -->
     <main class="login-bg">
-        <!-- login Area Start -->
-        <div class="login-form-area">
-            <div class="login-form">
+        <?php
+        
+        ?>
+        <!-- Register Area Start -->
+        <div class="register-form-area">
+            <div class="register-form text-center">
                 <!-- Login Heading -->
-                <div class="login-heading">
-                    <span>Login</span>
-                    <p>Enter Login details to get access</p>
+                <div class="register-heading">
+                    <span>Sign Up</span>
+                    <p>Create your account to get full access</p>
                 </div>
                 <!-- Single Input Fields -->
                 <div class="input-box">
                     <div class="single-input-fields">
-                        <label>Username or Email Address</label>
-                        <input type="text" placeholder="Username / Email address">
+                        <label>Full name</label>
+                        <input type="text" placeholder="Enter full name">
+                    </div>
+                    <div class="single-input-fields">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="Enter email address">
                     </div>
                     <div class="single-input-fields">
                         <label>Password</label>
                         <input type="password" placeholder="Enter Password">
                     </div>
-                    <div class="single-input-fields login-check">
-                        <input type="checkbox" id="fruit1" name="keep-log">
-                        <label for="fruit1">Keep me logged in</label>
-                    <a href="#" class="f-right">Forgot Password?</a>
+                    <div class="single-input-fields">
+                        <label>Confirm Password</label>
+                        <input type="password" placeholder="Confirm Password">
                     </div>
                 </div>
                 <!-- form Footer -->
-                <div class="login-footer">
-                    <p>Don’t have an account? <a href="register.html">Sign Up</a>  here</p>
-                    <button class="submit-btn3">Login</button>
+                <div class="register-footer">
+                    <p> Already have an account? <a href="login.html"> Login</a> here</p>
+                    <button class="submit-btn3">Sign Up</button>
                 </div>
             </div>
         </div>
-        <!-- login Area End -->
+        <!-- Register Area End -->
     </main>
 
     <!-- JS here -->
