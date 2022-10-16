@@ -38,19 +38,11 @@
 
                     if($queryRun > 0){
                         $_SESSION["id"] = $queryRun["customerID"];
-                        echo "
-                        <script>
-                            alert('LogIn successfuly');
-                        </script>"
-                        ;
+                        echo "<script> alert('LogIn successfuly');</script>";
                         header('Location: http://localhost/Kid-s-bookstore/index.php');
                     }
                     else{
-                        echo "
-                        <script>
-                            alert('Email or password incorrect');
-                        </script>"
-                        ;
+                        echo "<script> alert('Email or password incorrect');</script>";
                     }
 
                 }

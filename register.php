@@ -25,7 +25,33 @@
     <!-- header end -->
     <main class="login-bg">
         <?php
-        
+            session_start();
+            require "internal/dbconnect.php";
+
+            if(isset($_POST['submit'])){
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $conPassword = $_POST['conPassword'];
+
+                if(empty($name) || empty($email) || empty($password) || empty($conPassword)){
+                    echo "<script> alert('Please fill all value');</script>";
+                }
+                elseif (!($password === $conPassword)){
+                    echo "<script> alert('Please fill all value');</script>";
+                }
+                else{
+                    $getUser = mysqli_query($con,"SELECT * FROM customer WHERE email = '$email' ");
+                    $queryRun = mysqli_fetch_array($getUser);
+
+                    if($queryRun > 0){
+                        echo "<script> alert('Email already Registered');</script>";
+                    }
+                    else {
+                        $query = mysqli_query($con, "INSERT INTO users(full_name, email, password) value('$userID', 'customer', '$password')");
+                    }
+                }
+            }
         ?>
         <!-- Register Area Start -->
         <div class="register-form-area">
@@ -36,34 +62,49 @@
                     <p>Create your account to get full access</p>
                 </div>
                 <!-- Single Input Fields -->
-                <div class="input-box">
-                    <div class="single-input-fields">
-                        <label>Full name</label>
-                        <input type="text" placeholder="Enter full name"  id="name" name="name">
+                <form method="post">
+                    <div class="input-box">
+                        <div class="single-input-fields">
+                            <label>Full name</label>
+                            <input type="text" placeholder="Enter full name"  id="name" name="name">
+                        </div>
+                        <div class="single-input-fields">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="Email address" id="email" name="email" pattern="[a-zA-Z0-9+_.-]+@+[a-zA-Z0-9.-]+.com">
+                        </div>
+                        <div class="single-input-fields">
+                            <label>Password</label>
+                            <input type="password" placeholder="Enter Password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                        </div>
+                        <div class="single-input-fields">
+                            <label>Confirm Password</label>
+                            <input type="password" placeholder="Confirm Password" id="conPassword" name="conPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  onkeyup='check();'>
+                            <span id='message'></span>
+                        </div>
                     </div>
-                    <div class="single-input-fields">
-                        <label>Email Address</label>
-                        <input type="email" placeholder="Email address" id="email" name="email" pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/">
+                    <!-- form Footer -->
+                    <div class="register-footer">
+                        <p> Already have an account? <a href="login.php"> Login</a> here</p>
+                        <button type ="submit" name="submit" class="submit-btn3">Sign Up</button>
                     </div>
-                    <div class="single-input-fields">
-                        <label>Password</label>
-                        <input type="password" placeholder="Enter Password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
-                    </div>
-                    <div class="single-input-fields">
-                        <label>Confirm Password</label>
-                        <input type="password" placeholder="Confirm Password" id="conPassword" name="conPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
-                    </div>
-                </div>
-                <!-- form Footer -->
-                <div class="register-footer">
-                    <p> Already have an account? <a href="login.php"> Login</a> here</p>
-                    <button class="submit-btn3">Sign Up</button>
-                </div>
+                </form>
             </div>
         </div>
         <!-- Register Area End -->
     </main>
 
+    <script>
+        var check = function() {
+            if (document.getElementById('password').value ==
+                document.getElementById('conPassword').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'Matching with password';
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Not matching with password';
+            }
+        }
+    </script>
     <!-- JS here -->
     <!-- Jquery, Popper, Bootstrap -->
     <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
