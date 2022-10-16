@@ -54,6 +54,13 @@ if($input["action"] === 'edit')
 
 if($input["action"] === 'delete')
 {
+  $query1 = "
+  DELETE FROM stocks 
+  WHERE bookID = '".$input["bookID"]."'
+  ";
+  mysqli_query($con, $query1);
+
+  
  $query = "
  DELETE FROM books 
  WHERE bookID = '".$input["bookID"]."'
