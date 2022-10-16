@@ -78,3 +78,4 @@
     <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
 </div>
 
+<?php session_destroy(); ?>

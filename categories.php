@@ -1,8 +1,3 @@
-<?php
-session_start();
-require "internal/dbconnect.php";
-?>
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>

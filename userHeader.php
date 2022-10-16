@@ -1,3 +1,7 @@
+<?php
+session_start();
+require "internal/dbconnect.php";
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -45,12 +49,20 @@
                                     </div>
                                     <div class="header-info-right d-flex align-items-center">
                                         <ul>                                   
-                                            <!-- <li><a href="#">FAQ</a></li>
-                                            <li><a href="#">Track Order</a></li> -->
                                             <li class="shopping-card">
                                                 <a href="cart.html"><img src="assets/img/icon/cart.svg" alt=""></a>
                                             </li>
+                                            <?php
+                                                if(isset($_SESSION["id"])){
+                                            ?>
+                                            <li><a href="logOut.php" class="btn header-btn">Log Out</a></li>
+                                            <?php
+                                                }else{
+                                            ?>
                                             <li><a href="userLogin.php" class="btn header-btn">Sign in</a></li>
+                                            <?php
+                                                }
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -81,8 +93,6 @@
                                                     <li><a href="book-details.html">book Details</a></li>
                                                 </ul>
                                             </li>
-                                            <!-- <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="contact.html">Contect</a></li> -->
                                         </ul>
                                     </nav>
                                 </div>
@@ -100,33 +110,33 @@
 
 <!-- JS here -->
 <!-- Jquery, Popper, Bootstrap -->
-<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
-<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-<script src="./assets/js/popper.min.js"></script>
-<script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
 
-<!-- Slick-slider , Owl-Carousel ,slick-nav -->
-<script src="./assets/js/owl.carousel.min.js"></script>
-<script src="./assets/js/slick.min.js"></script>
-<script src="./assets/js/jquery.slicknav.min.js"></script>
+    <!-- Slick-slider , Owl-Carousel ,slick-nav -->
+    <script src="./assets/js/owl.carousel.min.js"></script>
+    <script src="./assets/js/slick.min.js"></script>
+    <script src="./assets/js/jquery.slicknav.min.js"></script>
 
-<!--wow , counter , waypoint, Nice-select -->
-<script src="./assets/js/wow.min.js"></script>
-<script src="./assets/js/jquery.magnific-popup.js"></script>
-<script src="./assets/js/jquery.nice-select.min.js"></script>
-<script src="./assets/js/jquery.counterup.min.js"></script>
-<script src="./assets/js/waypoints.min.js"></script>
-<script src="./assets/js/price_rangs.js"></script>
+    <!--wow , counter , waypoint, Nice-select -->
+    <script src="./assets/js/wow.min.js"></script>
+    <script src="./assets/js/jquery.magnific-popup.js"></script>
+    <script src="./assets/js/jquery.nice-select.min.js"></script>
+    <script src="./assets/js/jquery.counterup.min.js"></script>
+    <script src="./assets/js/waypoints.min.js"></script>
+    <script src="./assets/js/price_rangs.js"></script>
 
-<!-- contact js -->
-<script src="./assets/js/contact.js"></script>
-<script src="./assets/js/jquery.form.js"></script>
-<script src="./assets/js/jquery.validate.min.js"></script>
-<script src="./assets/js/mail-script.js"></script>
-<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+    <!-- contact js -->
+    <script src="./assets/js/contact.js"></script>
+    <script src="./assets/js/jquery.form.js"></script>
+    <script src="./assets/js/jquery.validate.min.js"></script>
+    <script src="./assets/js/mail-script.js"></script>
+    <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
 
-<!--  Plugins, main-Jquery -->	
-<script src="./assets/js/plugins.js"></script>
-<script src="./assets/js/main.js"></script>
+    <!--  Plugins, main-Jquery -->	
+    <script src="./assets/js/plugins.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>
