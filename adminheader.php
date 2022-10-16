@@ -12,6 +12,12 @@
                                             <a href="adminindex.html"><img src="assets/img/logo/logo.png" alt=""></a>
                                         </div>
                                     </div>
+                                    <div class="header-info-right d-flex align-items-center">
+                                        <!-- logo -->
+                                        <div>
+                                            <a href="index.php" style="color:black">Log Out</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -29,20 +35,13 @@
                                 <div class="main-menu text-center d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="admin_home.php">Home</a></li>
                                             <li><a href="bookCategory.php">Book Category</a></li>
                                             <li><a href="bookdescription.php">Edit Book Details</a></li>
                                             <li><a href="addBook.php">Add New Book</a></li>
-                                            <li><a href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                    <li><a href="book-details.html">book Details</a></li>
-                                                    <li><a href="blog_details.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Element</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="contact.html">Contect</a></li>
+                                            <li><a href="editstocks.php">Edit Stock Level</a></li>
+                                            <li><a href="editorderstatus.php">Edit Order Status</a></li>
+                                            <li><a href="vieworderdetails.php">View Order Details</a></li>
                                         </ul>
                                     </nav>
                                 </div>

@@ -237,7 +237,7 @@ if(!isset($_FILES['bookCoverImage']['tmp_name'])){
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label><span class="fa fa-money"></span>&nbsp Stock Level</label>
+                                    <label><span class="fa fa-codepen"></span>&nbsp Stock Level</label>
                                     <input class="form-control" type="number" name="stockLevel" required="true">
                                 </div>
 
