@@ -27,39 +27,64 @@
         <!-- login Area Start -->
         <div class="login-form-area">
             <?php
+                session_start();
+                require "internal/dbconnect.php";
+                if(isset($_POST['submit'])){
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
+
+                    $getUser = mysqli_query($con,"SELECT * FROM customer WHERE email = '$email' AND password = '$password' ");
+                    $queryRun = mysqli_fetch_array($getUser);
+
+                    if($queryRun > 0){
+                        $_SESSION["id"] = $queryRun["customerID"];
+                        echo "
+                        <script>
+                            alert('LogIn successfuly');
+                        </script>"
+                        ;
+                        header('Location: http://localhost/Kid-s-bookstore/index.php');
+                    }
+                    else{
+                        echo "
+                        <script>
+                            alert('Email or password incorrect');
+                        </script>"
+                        ;
+                    }
+
+                }
             ?>
             <div class="login-form">
                 <!-- Login Heading -->
-                <div class="login-heading">
-                    <span>Login</span>
-                    <p>Enter Login details to get access</p>
-                </div>
-                <!-- Single Input Fields -->
-                <div class="input-box">
-                    <div class="single-input-fields">
-                        <label>Username or Email Address</label>
-                        <input type="text" placeholder="Username / Email address">
+                <form method="post">
+                    <div class="login-heading">
+                        <span>Login</span>
+                        <p>Enter Login details to get access</p>
                     </div>
-                    <div class="single-input-fields">
-                        <label>Password</label>
-                        <input type="password" placeholder="Enter Password">
+                    <!-- Single Input Fields -->
+                    <div class="input-box">
+                        <div class="single-input-fields">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="Email address" id="email" name="email">
+                        </div>
+                        <div class="single-input-fields">
+                            <label>Password</label>
+                            <input type="password" placeholder="Enter Password" id="password" name="password">
+                        </div>
                     </div>
-                    <div class="single-input-fields login-check">
-                        <input type="checkbox" id="fruit1" name="keep-log">
-                        <label for="fruit1">Keep me logged in</label>
-                    <a href="#" class="f-right">Forgot Password?</a>
+                    
+                    <!-- form Footer -->
+                    <div class="login-footer">
+                        <p>Don’t have an account? <a href="register.php">Sign Up</a> here.</p>
+                        <button name="cancel" class="submit-btn3"><a href="index.php">Cancel</a></button>
+                        <button type="submit" name="submit" class="submit-btn3">Login</button>
                     </div>
-                </div>
-                <!-- form Footer -->
-                <div class="login-footer">
-                    <p>Don’t have an account? <a href="register.html">Sign Up</a>  here</p>
-                    <button class="submit-btn3">Login</button>
-                </div>
+                </form>
             </div>
         </div>
         <!-- login Area End -->
     </main>
-
     <!-- JS here -->
     <!-- Jquery, Popper, Bootstrap -->
     <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>

@@ -94,9 +94,9 @@
                     <div class="selling-active">
                         <?php
                             $BestSale = "SELECT * FROM books INNER JOIN tags ON books.tagsID = tags.tagsID WHERE tags.tagsName = 'Best Sale'";
-                            $QueryRun = mysqli_query($con,$BestSale);
+                            $queryRun = mysqli_query($con,$BestSale);
 
-                            foreach($QueryRun as $item){
+                            foreach($queryRun as $item){
                         ?>
                         <div class="properties pb-20">
                             <div class="properties-card">
@@ -141,9 +141,9 @@
                     <div class="selling-active">
                         <?php
                             $BestSale = "SELECT * FROM books INNER JOIN tags ON books.tagsID = tags.tagsID WHERE tags.tagsName = 'New Release'";
-                            $QueryRun = mysqli_query($con,$BestSale);
+                            $queryRun = mysqli_query($con,$BestSale);
 
-                            foreach($QueryRun as $item){
+                            foreach($queryRun as $item){
                         ?>
                         <div class="properties pb-20">
                             <div class="properties-card">

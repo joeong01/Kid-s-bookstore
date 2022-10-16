@@ -39,24 +39,24 @@
                 <div class="input-box">
                     <div class="single-input-fields">
                         <label>Full name</label>
-                        <input type="text" placeholder="Enter full name">
+                        <input type="text" placeholder="Enter full name"  id="name" name="name">
                     </div>
                     <div class="single-input-fields">
                         <label>Email Address</label>
-                        <input type="email" placeholder="Enter email address">
+                        <input type="email" placeholder="Email address" id="email" name="email" pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/">
                     </div>
                     <div class="single-input-fields">
                         <label>Password</label>
-                        <input type="password" placeholder="Enter Password">
+                        <input type="password" placeholder="Enter Password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                     </div>
                     <div class="single-input-fields">
                         <label>Confirm Password</label>
-                        <input type="password" placeholder="Confirm Password">
+                        <input type="password" placeholder="Confirm Password" id="conPassword" name="conPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                     </div>
                 </div>
                 <!-- form Footer -->
                 <div class="register-footer">
-                    <p> Already have an account? <a href="login.html"> Login</a> here</p>
+                    <p> Already have an account? <a href="login.php"> Login</a> here</p>
                     <button class="submit-btn3">Sign Up</button>
                 </div>
             </div>
