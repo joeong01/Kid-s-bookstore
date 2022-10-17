@@ -24,6 +24,9 @@ require "internal/dbconnect.php";
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+    </style>
 </head>
 <body>
     <header>
@@ -41,16 +44,15 @@ require "internal/dbconnect.php";
                                         </div>
                                         <!-- Search Box -->
                                         <form action="#" class="form-box">
-                                            <input type="text" name="Search" placeholder="Search book by author or publisher">
-                                            <div class="search-icon">
-                                                <i class="ti-search"></i>
-                                            </div>
+                                            <input type="text" name="search" onkeyup="showResult(this.value)" id="search" size="10" placeholder="Search book by author or publisher">
+                                            <!-- <div class="search-icon"><i class="ti-search"></i></div> -->
+                                            <div id="results" style="z-index: 10; background-color: white; overflow: auto; max-height:400px; position: absolute;"></div>
                                         </form>
                                     </div>
                                     <div class="header-info-right d-flex align-items-center">
                                         <ul>                                   
                                             <li class="shopping-card">
-                                                <a href="cart.html"><img src="assets/img/icon/cart.svg" alt=""></a>
+                                                <a href="cart.php"><img src="assets/img/icon/cart.svg" alt=""></a>
                                             </li>
                                             <?php
                                                 if(isset($_SESSION["id"])){
@@ -84,13 +86,17 @@ require "internal/dbconnect.php";
                                         <ul id="navigation">    
                                             <li><a href="index.php">Home</a></li>
                                             <li><a href="categories.php">Categories</a></li>
-                                            <li><a href="about.html">About</a></li>
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
-                                                    <li><a href="userLogin.php">login</a></li>
-                                                    <li><a href="cart.html">Cart</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                    <li><a href="book-details.html">book Details</a></li>
+                                                    <li><a href="cart.php">Cart</a></li>
+                                                    <li><a href="checkout.php">Checkout</a></li>
+                                                    <?php
+                                                        if(isset($_SESSION["id"])){
+                                                    ?>
+                                                    <li><a href="editProfile.php">Edit Profile</a></li>
+                                                    <?php
+                                                        }
+                                                    ?>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -107,7 +113,24 @@ require "internal/dbconnect.php";
             </div>
         </div>
     </header>
-
+    <script>
+        function showResult(str) {
+        if (str.length==0) {
+            document.getElementById("results").innerHTML="";
+            document.getElementById("results").style.border="0px";
+            return;
+        }
+        var xmlhttp=new XMLHttpRequest();
+        xmlhttp.onreadystatechange=function() {
+            if (this.readyState==4 && this.status==200) {
+            document.getElementById("results").innerHTML=this.responseText;
+            document.getElementById("results").style.border="1px solid #A5ACB2";
+            }
+        }
+        xmlhttp.open("GET","searchData.php?q="+str,true);
+        xmlhttp.send();
+        }
+    </script>
 <!-- JS here -->
 <!-- Jquery, Popper, Bootstrap -->
     <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
