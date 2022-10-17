@@ -34,23 +34,19 @@
                 $name = $_POST['name'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
-                $conPassword = $_POST['conPassword'];
 
-                if(empty($name) || empty($email) || empty($password) || empty($conPassword)){
-                    echo "<script> alert('Please fill all value');</script>";
-                }
-                else{
-                    $getUser = mysqli_query($con,"SELECT * FROM customer WHERE email = '$email' ");
-                    $queryRun = mysqli_fetch_array($getUser);
+                $getUser = mysqli_query($con,"SELECT * FROM customer WHERE email = '$email' ");
+                $queryRun = mysqli_fetch_array($getUser);
 
-                    if($queryRun > 0){
-                        echo "<script> alert('Email already Registered');</script>";
-                    }
-                    else {
-                        $query = mysqli_query($con, "INSERT INTO customer(full_name, email, password) value('$name', 'customer', '$password')");
-                        echo "<script> alert('Registered Successly!');</script>";
-                    }
+                if($queryRun > 0){
+                    echo "<script> alert('Email already Registered');</script>";
                 }
+                else {
+                    $query = mysqli_query($con, "INSERT INTO customer(full_name, email, password) value('$name', '$email', '$password')");
+                    echo "<script> alert('Registered Successly!');</script>";
+                    header('Location: http://localhost/Kid-s-bookstore/userLogin.php');
+                }
+                
             }
         ?>
         <!-- Register Area Start -->
@@ -66,22 +62,19 @@
                     <div class="input-box">
                         <div class="single-input-fields">
                             <label>Full name</label>
-                            <input type="text" placeholder="Enter full name" id="name" name="name">
+                            <input type="text" placeholder="Enter full name" id="name" name="name" required>
                         </div>
                         <div class="single-input-fields">
                             <label>Email Address</label>
-                            <input type="email" placeholder="Email address" id="email" name="email"
-                                pattern="[a-zA-Z0-9+_.-]+@+[a-zA-Z0-9.-]+.com">
+                            <input type="email" placeholder="Email address" id="email" name="email" pattern='[a-zA-Z0-9_]+@+[a-z]+.com' title='Example_1@example.com'  required>
                         </div>
                         <div class="single-input-fields">
                             <label>Password</label>
-                            <input type="password" placeholder="Enter Password" id="password" name="password"
-                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                            <input type="password" placeholder="Enter Password" id="password" name="password" required>
                         </div>
                         <div class="single-input-fields">
                             <label>Confirm Password</label>
-                            <input type="password" placeholder="Confirm Password" id="conPassword" name="conPassword"
-                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onkeyup='check();'>
+                            <input type="password" placeholder="Confirm Password" id="conPassword" name="conPassword" onkeyup='check();' required>
                             <span id='message'></span>
                         </div>
                     </div>

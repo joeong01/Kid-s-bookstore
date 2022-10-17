@@ -16,20 +16,20 @@
                                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
                                         <div class="hero-caption text-center">
                                             <h1 data-animation="fadeInUp" data-delay=".4s">Science</h1>
-                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories=101" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=101" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Single Slider -->
-                        <div class="single-slider slider-height slider-bg2 d-flex align-items-center">
+                        <div class="single-slider slider-height slider-bg4 d-flex align-items-center">
                             <div class="container">
                                 <div class="row justify-content-center">
                                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
                                         <div class="hero-caption text-center">
                                             <h1 data-animation="fadeInUp" data-delay=".4s">Plant</h1>
-                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories=102" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=102" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
                                         </div>
                                     </div>
                                 </div>
@@ -42,19 +42,19 @@
                                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
                                         <div class="hero-caption text-center">
                                             <h1 data-animation="fadeInUp" data-delay=".4s">Language</h1>
-                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories=103" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=103" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="single-slider slider-height slider-bg4 d-flex align-items-center">
+                        <div class="single-slider slider-height slider-bg2 d-flex align-items-center">
                             <div class="container">
                                 <div class="row justify-content-center">
                                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
                                         <div class="hero-caption text-center">
                                             <h1 data-animation="fadeInUp" data-delay=".4s">Comic</h1>
-                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories=104" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=104" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
                                         <div class="hero-caption text-center">
                                             <h1 data-animation="fadeInUp" data-delay=".4s">Animal</h1>
-                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories=105" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=105" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
                                         </div>
                                     </div>
                                 </div>
@@ -140,8 +140,8 @@
                 <div class="col-xl-12">
                     <div class="selling-active">
                         <?php
-                            $BestSale = "SELECT * FROM books INNER JOIN tags ON books.tagsID = tags.tagsID WHERE tags.tagsName = 'New Release'";
-                            $queryRun = mysqli_query($con,$BestSale);
+                            $newRelease = "SELECT * FROM books INNER JOIN tags ON books.tagsID = tags.tagsID WHERE tags.tagsName = 'New Release'";
+                            $queryRun = mysqli_query($con,$newRelease);
 
                             foreach($queryRun as $item){
                         ?>

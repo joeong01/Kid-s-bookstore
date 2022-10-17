@@ -31,25 +31,11 @@
                             <div class="footer-tittle">
                                 <h4>Book Category</h4>
                                 <ul>  
-                                    <li><a href="#">History</a></li>
-                                    <li><a href="#">Horror - Thriller</a></li>
-                                    <li><a href="#">Love Stories</a></li>
-                                    <li><a href="#">Science Fiction</a></li>
-                                    <li><a href="#">Business</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>&nbsp;</h4>
-                                <ul>
-                                    <li><a href="#">Biography</a></li>
-                                    <li><a href="#">Astrology</a></li>
-                                    <li><a href="#">Digital Marketing</a></li>
-                                    <li><a href="#">Software Development</a></li>
-                                    <li><a href="#">Ecommerce</a></li>
+                                    <li><a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=104">Animal</a></li>
+                                    <li><a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=105">Comic</a></li>
+                                    <li><a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=103">Language</a></li>
+                                    <li><a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=102">Plant</a></li>
+                                    <li><a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=101">Science</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -59,11 +45,11 @@
                             <div class="footer-tittle">
                                 <h4>Site Map</h4>
                                 <ul class="mb-20">
-                                    <li><a href="#">Home</a></li>
+                                    <li><a href="index.php">Home</a></li>
                                     <li><a href="#">About Us</a></li>
                                     <li><a href="#">FAQs</a></li>
                                     <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="http://localhost/Kid-s-bookstore/adminLogin.php">Admin</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -77,5 +63,3 @@
 <div id="back-top" >
     <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
 </div>
-
-<?php session_destroy(); ?>

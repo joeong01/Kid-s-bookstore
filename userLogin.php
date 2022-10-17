@@ -37,7 +37,7 @@
                     $queryRun = mysqli_fetch_array($getUser);
 
                     if($queryRun > 0){
-                        $_SESSION["id"] = $queryRun["customerID"];
+                        $_SESSION["id"] = $queryRun['customerID'];
                         echo "<script> alert('LogIn successfuly');</script>";
                         header('Location: http://localhost/Kid-s-bookstore/index.php');
                     }
@@ -58,11 +58,11 @@
                     <div class="input-box">
                         <div class="single-input-fields">
                             <label>Email Address</label>
-                            <input type="email" placeholder="Email address" id="email" name="email">
+                            <input type="email" placeholder="Email address" id="email" name="email" pattern='[a-zA-Z0-9_]+@+[a-z]+.com' title='Example_1@example.com' required>
                         </div>
                         <div class="single-input-fields">
                             <label>Password</label>
-                            <input type="password" placeholder="Enter Password" id="password" name="password">
+                            <input type="password" placeholder="Enter Password" id="password" name="password" required>
                         </div>
                     </div>
                     
