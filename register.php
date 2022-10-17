@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -8,19 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/icon/favicon.png">
 
-	<!-- CSS here -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="assets/css/slicknav.css">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
     <link rel="stylesheet" href="assets/css/animate.min.css">
     <link rel="stylesheet" href="assets/css/price_rangs.css">
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
-	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-	<link rel="stylesheet" href="assets/css/themify-icons.css">
-	<link rel="stylesheet" href="assets/css/slick.css">
-	<link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
     <!-- header end -->
     <main class="login-bg">
@@ -37,9 +39,6 @@
                 if(empty($name) || empty($email) || empty($password) || empty($conPassword)){
                     echo "<script> alert('Please fill all value');</script>";
                 }
-                elseif (!($password === $conPassword)){
-                    echo "<script> alert('Please fill all value');</script>";
-                }
                 else{
                     $getUser = mysqli_query($con,"SELECT * FROM customer WHERE email = '$email' ");
                     $queryRun = mysqli_fetch_array($getUser);
@@ -48,7 +47,8 @@
                         echo "<script> alert('Email already Registered');</script>";
                     }
                     else {
-                        $query = mysqli_query($con, "INSERT INTO users(full_name, email, password) value('$userID', 'customer', '$password')");
+                        $query = mysqli_query($con, "INSERT INTO customer(full_name, email, password) value('$name', 'customer', '$password')");
+                        echo "<script> alert('Registered Successly!');</script>";
                     }
                 }
             }
@@ -66,26 +66,29 @@
                     <div class="input-box">
                         <div class="single-input-fields">
                             <label>Full name</label>
-                            <input type="text" placeholder="Enter full name"  id="name" name="name">
+                            <input type="text" placeholder="Enter full name" id="name" name="name">
                         </div>
                         <div class="single-input-fields">
                             <label>Email Address</label>
-                            <input type="email" placeholder="Email address" id="email" name="email" pattern="[a-zA-Z0-9+_.-]+@+[a-zA-Z0-9.-]+.com">
+                            <input type="email" placeholder="Email address" id="email" name="email"
+                                pattern="[a-zA-Z0-9+_.-]+@+[a-zA-Z0-9.-]+.com">
                         </div>
                         <div class="single-input-fields">
                             <label>Password</label>
-                            <input type="password" placeholder="Enter Password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                            <input type="password" placeholder="Enter Password" id="password" name="password"
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                         </div>
                         <div class="single-input-fields">
                             <label>Confirm Password</label>
-                            <input type="password" placeholder="Confirm Password" id="conPassword" name="conPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  onkeyup='check();'>
+                            <input type="password" placeholder="Confirm Password" id="conPassword" name="conPassword"
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onkeyup='check();'>
                             <span id='message'></span>
                         </div>
                     </div>
                     <!-- form Footer -->
                     <div class="register-footer">
                         <p> Already have an account? <a href="login.php"> Login</a> here</p>
-                        <button type ="submit" name="submit" class="submit-btn3">Sign Up</button>
+                        <button type="submit" name="submit" class="submit-btn3">Sign Up</button>
                     </div>
                 </form>
             </div>
@@ -94,16 +97,16 @@
     </main>
 
     <script>
-        var check = function() {
-            if (document.getElementById('password').value ==
-                document.getElementById('conPassword').value) {
-                document.getElementById('message').style.color = 'green';
-                document.getElementById('message').innerHTML = 'Matching with password';
-            } else {
-                document.getElementById('message').style.color = 'red';
-                document.getElementById('message').innerHTML = 'Not matching with password';
-            }
+    var check = function() {
+        if (document.getElementById('password').value ==
+            document.getElementById('conPassword').value) {
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').innerHTML = 'Matching with password';
+        } else {
+            document.getElementById('message').style.color = 'red';
+            document.getElementById('message').innerHTML = 'Not matching with password';
         }
+    }
     </script>
     <!-- JS here -->
     <!-- Jquery, Popper, Bootstrap -->
@@ -132,8 +135,9 @@
     <script src="./assets/js/mail-script.js"></script>
     <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
 
-    <!--  Plugins, main-Jquery -->	
+    <!--  Plugins, main-Jquery -->
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
-    </body>
+</body>
+
 </html>
