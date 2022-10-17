@@ -9,7 +9,7 @@ $queryRun = mysqli_fetch_array($getBook);
 
 foreach($queryRun as $item){
   array_push($link,$item['bookID']);
-  $combine = $item['bookName']." by ". $item['bookAuthor'];
+  $combine = $item['bookName'].' by '. $item['bookAuthor'];
   array_push($title,$combine);
 }
 
