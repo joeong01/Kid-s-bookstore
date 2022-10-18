@@ -25,8 +25,6 @@ require "internal/dbconnect.php";
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <style>
-    </style>
 </head>
 <body>
     <header>
@@ -46,7 +44,7 @@ require "internal/dbconnect.php";
                                         <form action="#" class="form-box">
                                             <input type="text" name="search" onkeyup="showResult(this.value)" id="search" size="10" placeholder="Search book by author or publisher">
                                             <!-- <div class="search-icon"><i class="ti-search"></i></div> -->
-                                            <div id="results" style="z-index: 10; background-color: white; overflow: auto; max-height:400px; position: absolute;"></div>
+                                            <div id="results" style="font-size: 20px; z-index: 10; background-color: grey; color: black; overflow: auto; max-height: 400px; min-height: fit-content; min-width: 530px; max-width: fit-content; position: absolute;"></div>
                                         </form>
                                     </div>
                                     <div class="header-info-right d-flex align-items-center">
