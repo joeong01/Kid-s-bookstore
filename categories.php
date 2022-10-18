@@ -159,17 +159,7 @@
                                                         . '</h3>'
                                                         . '<p>'.$row['bookAuthor'].''
                                                         . '</p>'
-                                                        . '<div class="properties-footer d-flex justify-content-between align-items-center">'
-                                                            . '<div class="review">'
-                                                                . '<div class="rating">'
-                                                                    . '<i class="fas fa-star"></i>'
-                                                                    . '<i class="fas fa-star"></i>'
-                                                                    . '<i class="fas fa-star"></i>'
-                                                                    . '<i class="fas fa-star"></i>'
-                                                                    . '<i class="fas fa-star-half-alt"></i>'
-                                                                . '</div>'
-                                                                . '<p>(<span>120</span> Review)</p>'
-                                                            . '</div>'
+                                                        . '<div class="properties-footer d-flex justify-content-between align-items-center">'                                                            
                                                             . '<div class="price">'
                                                                 . '<span>$'.$row['price'].'</span>'
                                                             . '</div>'
@@ -192,40 +182,40 @@
         <!-- listing-area Area End -->
 
     </main>
-<?php
+    <?php
     include("footer.php")
 ?>
 
-<!-- JS here -->
-<!-- Jquery, Popper, Bootstrap -->
-<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
-<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-<script src="./assets/js/popper.min.js"></script>
-<script src="./assets/js/bootstrap.min.js"></script>
+    <!-- JS here -->
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
 
-<!-- Slick-slider , Owl-Carousel ,slick-nav -->
-<script src="./assets/js/owl.carousel.min.js"></script>
-<script src="./assets/js/slick.min.js"></script>
-<script src="./assets/js/jquery.slicknav.min.js"></script>
+    <!-- Slick-slider , Owl-Carousel ,slick-nav -->
+    <script src="./assets/js/owl.carousel.min.js"></script>
+    <script src="./assets/js/slick.min.js"></script>
+    <script src="./assets/js/jquery.slicknav.min.js"></script>
 
-<!--wow , counter , waypoint, Nice-select -->
-<script src="./assets/js/wow.min.js"></script>
-<script src="./assets/js/jquery.magnific-popup.js"></script>
-<script src="./assets/js/jquery.nice-select.min.js"></script>
-<script src="./assets/js/jquery.counterup.min.js"></script>
-<script src="./assets/js/waypoints.min.js"></script>
-<script src="./assets/js/price_rangs.js"></script>
+    <!--wow , counter , waypoint, Nice-select -->
+    <script src="./assets/js/wow.min.js"></script>
+    <script src="./assets/js/jquery.magnific-popup.js"></script>
+    <script src="./assets/js/jquery.nice-select.min.js"></script>
+    <script src="./assets/js/jquery.counterup.min.js"></script>
+    <script src="./assets/js/waypoints.min.js"></script>
+    <script src="./assets/js/price_rangs.js"></script>
 
-<!-- contact js -->
-<script src="./assets/js/contact.js"></script>
-<script src="./assets/js/jquery.form.js"></script>
-<script src="./assets/js/jquery.validate.min.js"></script>
-<script src="./assets/js/mail-script.js"></script>
-<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+    <!-- contact js -->
+    <script src="./assets/js/contact.js"></script>
+    <script src="./assets/js/jquery.form.js"></script>
+    <script src="./assets/js/jquery.validate.min.js"></script>
+    <script src="./assets/js/mail-script.js"></script>
+    <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
 
-<!--  Plugins, main-Jquery -->	
-<script src="./assets/js/plugins.js"></script>
-<script src="./assets/js/main.js"></script>
+    <!--  Plugins, main-Jquery -->
+    <script src="./assets/js/plugins.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
 
 </html>
