@@ -161,7 +161,7 @@
                                                         . '</p>'
                                                         . '<div class="properties-footer d-flex justify-content-between align-items-center">'                                                            
                                                             . '<div class="price">'
-                                                                . '<span>$'.$row['price'].'</span>'
+                                                                . '<span>RM'.$row['price'].'</span>'
                                                             . '</div>'
                                                         . '</div>'
                                                     . '</div>'
