@@ -1,6 +1,28 @@
 <?php
     include("userHeader.php");
     include("dbconnection.php");
+
+    $custID = $_SESSION["id"];
+
+    $getCartSql = "SELECT * FROM shoppingCart WHERE customerID=$custID";
+
+    $result = mysqli_query($con, $getCartSql);
+
+    if(mysqli_num_rows($result) > 0){
+        $row = mysqli_fetch_assoc($result);
+    }
+    
+    $cart_id = $row['cartID'];
+    $totalPrice = $row['totalPrice'];
+
+    //get book from shoppingcartdetails
+    $getBookSql = "SELECT shoppingCartDetails.numberOfBooks, shoppingCartDetails.totalPriceOfOne, shoppingCartDetails.bookID, books.bookImage , books.bookName 
+    FROM shoppingCartDetails 
+    INNER JOIN books ON shoppingCartDetails.bookID = books.bookID
+    WHERE cartID=$cart_id";
+
+    $result = mysqli_query($con, $getBookSql);
+
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -55,60 +77,41 @@
                                 <th scope="col">Price</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total</th>
+                                <th scope="col">Options</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="assets/img/gallery/best-books1.jpg" alt="" />
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                                        <input class="input-number" type="text" value="1" min="0" max="10">
-                                        <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="assets/img/gallery/best_selling1.jpg" alt="" />
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                                        <input class="input-number2" type="text" value="1" min="0" max="10">
-                                        <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr class="bottom_button">
+                            <?php
+                            if(mysqli_num_rows($result) > 0){
+                                while($row = mysqli_fetch_assoc($result)){
+                                    echo '<tr>'
+                                        .'<td>'
+                                            .'<div class="media">'
+                                                .'<div class="d-flex">'
+                                                    .'<a href="book-details.php?id='.$row['bookID'].'"><img src="data:image/jpeg;base64,'.base64_encode($row['bookImage']).'" alt=""></a>'
+                                                .'</div>'
+                                                .'<div class="media-body">'
+                                                    .'<p>'.$row['bookName'].'</p>'
+                                                .'</div>'
+                                            .'</div>'
+                                        .'</td>'
+                                        .'<td>'
+                                            .'<h5>RM'.$row['totalPriceOfOne'].'</h5>'
+                                        .'</td>'
+                                        .'<td>'
+                                            .'<h5>'.$row['numberOfBooks'].'</h5>'
+                                        .'</td>'
+                                        .'<td>'
+                                            .'<h5>RM'.$row['totalPriceOfOne']*$row['numberOfBooks'].'</h5>'
+                                        .'</td>'
+                                        .'<td>'
+                                            .'<a href="cartDeleteBook.php?bookId='.$row['bookID'].'&cartId='.$cart_id.'&num='.$row['numberOfBooks'].'&price='.$row['totalPriceOfOne'].'"><h5>Delete</h5></a>'
+                                        .'</td>'
+                                    .'</tr>';
+                                }
+                            }
+                            ?>
+                            <!-- <tr class="bottom_button">
                                 <td>
                                     <a class="btn" href="#">Update Cart</a>
                                 </td>
@@ -119,26 +122,27 @@
                                         <a class="btn" href="#">Close Coupon</a>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> -->
                             <tr>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td>
                                     <h5>Subtotal</h5>
                                 </td>
                                 <td>
-                                    <h5>$2160.00</h5>
+                                    <?php echo '<h5>RM '.$totalPrice.' </h5>' ?>
                                 </td>
                             </tr>
-                            <tr class="shipping_area">
+                            <!-- <tr class="shipping_area">
                                 <td></td>
-                                <td></td>
-                                <td>
+                                <td></td> -->
+                                <!-- <td>
                                     <h5>Shipping</h5>
                                 </td>
                                 <td>
-                                    <div class="shipping_box">
-                                        <form>
+                                    <div class="shipping_box"> -->
+                                        <!-- <form>
                                             Flat Rate: $5.00
                                             <input type="radio" aria-label="Radio button for following text input">
                                             
@@ -154,8 +158,8 @@
                                         <h6>
                                             Calculate Shipping
                                             <i class="fa fa-caret-down" aria-hidden="true"></i>
-                                        </h6>
-                                        <select class="shipping_select">
+                                        </h6> -->
+                                        <!-- <select class="shipping_select">
                                             <option value="1">Bangladesh</option>
                                             <option value="2">India</option>
                                             <option value="4">Pakistan</option>
@@ -166,15 +170,15 @@
                                             <option value="4">Select a State</option>
                                         </select>
                                         <input class="post_code" type="text" placeholder="Postcode/Zipcode" />
-                                        <a class="btn" href="#">Update Details</a>
-                                    </div>
-                                </td>
-                            </tr>
+                                        <a class="btn" href="#">Update Details</a> -->
+                                    <!-- </div>
+                                </td> -->
+                            <!-- </tr> -->
                         </tbody>
                     </table>
                     <div class="checkout_btn_inner float-right">
-                        <a class="btn" href="#">Continue Shopping</a>
-                        <a class="btn checkout_btn" href="checkout.html">Proceed to checkout</a>
+                        <a class="btn" href="index.php">Continue Shopping</a>
+                        <a class="btn checkout_btn" href="checkout.php">Proceed to checkout</a>
                     </div>
                 </div>
             </div>

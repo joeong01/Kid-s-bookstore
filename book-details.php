@@ -12,7 +12,8 @@ $book_price = $book_info['price'];
 $custID = $_SESSION["id"];
 
 if(isset($_GET['add'])){
-    $getCartSql = "SELECT cartID FROM shoppingCart WHERE customerID=$custID";
+    //get cart ID
+    $getCartSql = "SELECT * FROM shoppingCart WHERE customerID=$custID";
 
     $result = mysqli_query($con, $getCartSql);
 
@@ -21,11 +22,45 @@ if(isset($_GET['add'])){
     }
     
     $cart_id = $row['cartID'];
+    $total_items = $row['totalItems'];
+    $total_price = $row['totalPrice'];
 
-    $sqlquery = "INSERT INTO shoppingCartDetails (cartID,bookID,numberOfBooks,totalPriceOfOne) 
-    VALUES ($cart_id,$book_id,1,$book_price)";
+    //get book from shoppingcartdetails
+    $getBookSql = "SELECT * FROM shoppingCartDetails WHERE cartID=$cart_id AND bookID=$book_id";
 
-    mysqli_query($con, $sqlquery);
+    $result = mysqli_query($con, $getBookSql);
+
+    //if the book exist, numberofBooks +1
+    if(mysqli_num_rows($result) > 0){
+        $row = mysqli_fetch_assoc($result);
+        $numBooks = $row['numberOfBooks'];
+        
+        $addBookSql = "UPDATE shoppingCartDetails SET numberOfBooks=$numBooks+1
+        WHERE cartID=$cart_id AND bookID=$book_id";
+    
+        mysqli_query($con, $addBookSql);
+
+        //update the price and items in the cart
+        $addPriceSql = "UPDATE shoppingCart SET totalItems=$total_items+1, totalPrice=$total_price+$book_price
+        WHERE cartID=$cart_id ";
+
+        mysqli_query($con, $addPriceSql);
+    }
+    //else add the book
+    else{
+        $addBookSql = "INSERT INTO shoppingCartDetails (cartID,bookID,numberOfBooks,totalPriceOfOne) 
+        VALUES ($cart_id,$book_id,1,$book_price)";
+    
+        mysqli_query($con, $addBookSql);
+
+        //update the price and items in the cart
+        $addPriceSql = "UPDATE shoppingCart SET totalItems=$total_items+1, totalPrice=$total_price+$book_price
+        WHERE cartID=$cart_id ";
+
+        mysqli_query($con, $addPriceSql);
+    }
+
+    $getPriceSql = "SELECT * FROM shoppingCartDetails WHERE cartID=$cart_id";
 }
 
 ?>
@@ -64,7 +99,7 @@ if(isset($_GET['add'])){
                                     <?php
                                         echo '<a href="book-details.php?id='.$book_info['bookID'].'&add=true" class="white-btn mr-10">Add to Cart</a>'
                                     ?>
-                                    <button class="border-btn share-btn"><i class="fas fa-share-alt"></i></button>
+                                    <a href="#" class="border-btn share-btn"><i class="fas fa-share-alt"></i></a>
                                 </div>
                             </div>
                         </div>
