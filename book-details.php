@@ -60,7 +60,7 @@ if(isset($_GET['add'])){
         mysqli_query($con, $addPriceSql);
     }
 
-    $getPriceSql = "SELECT * FROM shoppingCartDetails WHERE cartID=$cart_id";
+    echo '<script>alert("Added to cart")</script>';
 }
 
 ?>
