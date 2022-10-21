@@ -6,6 +6,63 @@ $bookInfoSql = "SELECT * FROM books WHERE bookID='$book_id'";
 $bookInfoResult = mysqli_query($con,$bookInfoSql);
 if(mysqli_num_rows($bookInfoResult) > 0)
     $book_info = mysqli_fetch_assoc($bookInfoResult);
+
+$book_price = $book_info['price'];
+
+$custID = $_SESSION["id"];
+
+if(isset($_GET['add'])){
+    //get cart ID
+    $getCartSql = "SELECT * FROM shoppingCart WHERE customerID=$custID";
+
+    $result = mysqli_query($con, $getCartSql);
+
+    if(mysqli_num_rows($result) > 0){
+        $row = mysqli_fetch_assoc($result);
+    }
+    
+    $cart_id = $row['cartID'];
+    $total_items = $row['totalItems'];
+    $total_price = $row['totalPrice'];
+
+    //get book from shoppingcartdetails
+    $getBookSql = "SELECT * FROM shoppingCartDetails WHERE cartID=$cart_id AND bookID=$book_id";
+
+    $result = mysqli_query($con, $getBookSql);
+
+    //if the book exist, numberofBooks +1
+    if(mysqli_num_rows($result) > 0){
+        $row = mysqli_fetch_assoc($result);
+        $numBooks = $row['numberOfBooks'];
+        
+        $addBookSql = "UPDATE shoppingCartDetails SET numberOfBooks=$numBooks+1
+        WHERE cartID=$cart_id AND bookID=$book_id";
+    
+        mysqli_query($con, $addBookSql);
+
+        //update the price and items in the cart
+        $addPriceSql = "UPDATE shoppingCart SET totalItems=$total_items+1, totalPrice=$total_price+$book_price
+        WHERE cartID=$cart_id ";
+
+        mysqli_query($con, $addPriceSql);
+    }
+    //else add the book
+    else{
+        $addBookSql = "INSERT INTO shoppingCartDetails (cartID,bookID,numberOfBooks,totalPriceOfOne) 
+        VALUES ($cart_id,$book_id,1,$book_price)";
+    
+        mysqli_query($con, $addBookSql);
+
+        //update the price and items in the cart
+        $addPriceSql = "UPDATE shoppingCart SET totalItems=$total_items+1, totalPrice=$total_price+$book_price
+        WHERE cartID=$cart_id ";
+
+        mysqli_query($con, $addPriceSql);
+    }
+
+    echo '<script>alert("Added to cart")</script>';
+}
+
 ?>
 
 <main>
@@ -31,7 +88,10 @@ if(mysqli_num_rows($bookInfoResult) > 0)
                                         <br>
                                         <p>Published On: <?php echo $book_info['publishedDate']; ?></p>
                                     </div>
-                                    <a href="#" class="white-btn mr-10">Add to Cart</a>
+                                    <?php
+                                        echo '<a href="book-details.php?id='.$book_info['bookID'].'&add=true" class="white-btn mr-10">Add to Cart</a>'
+                                    ?>
+                                    <a href="#" class="border-btn share-btn"><i class="fas fa-share-alt"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +146,7 @@ if(mysqli_num_rows($bookInfoResult) > 0)
     <!-- Books review End -->
 </main>
 <?php
-include('footer.php');
+    include("footer.php")
 ?>
 <!-- Scroll Up -->
 <div id="back-top">
@@ -94,6 +154,10 @@ include('footer.php');
 </div>
 
 <!-- JS here -->
+<script>
+
+
+</script>
 <!-- Jquery, Popper, Bootstrap -->
 <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>

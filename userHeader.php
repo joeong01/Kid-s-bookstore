@@ -50,7 +50,17 @@ require "internal/dbconnect.php";
                                     <div class="header-info-right d-flex align-items-center">
                                         <ul>                                   
                                             <li class="shopping-card">
+                                            <?php
+                                                if(isset($_SESSION["id"])){
+                                            ?>
                                                 <a href="cart.php"><img src="assets/img/icon/cart.svg" alt=""></a>
+                                            <?php
+                                                }else{
+                                            ?>
+                                                <a href="userLogin.php"><img src="assets/img/icon/cart.svg" alt=""></a>
+                                            <?php
+                                                }
+                                            ?>   
                                             </li>
                                             <?php
                                                 if(isset($_SESSION["id"])){

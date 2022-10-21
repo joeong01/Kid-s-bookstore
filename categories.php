@@ -103,7 +103,7 @@
                         </div>
                         <div class="best-selling p-0">
                             <div class="row">
-                                <?php
+                    <?php
                         if(isset($_GET['categories'])){
                             $categoryChecked = [];
                             $categoryChecked = $_GET['categories'];
