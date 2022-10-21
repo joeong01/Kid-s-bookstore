@@ -15,7 +15,7 @@
                                     <div class="header-info-right d-flex align-items-center">
                                         <!-- logo -->
                                         <div>
-                                            <a href="index.php" style="color:black">Log Out</a>
+                                            <a href="logOut.php" style="color:black">Log Out</a>
                                         </div>
                                     </div>
                                 </div>
