@@ -3,64 +3,71 @@ require "internal/dbconnect.php";
 include("userHeader.php");
 $book_id = $_GET['id'];
 $bookInfoSql = "SELECT * FROM books WHERE bookID='$book_id'";
-$bookInfoResult = mysqli_query($con,$bookInfoSql);
-if(mysqli_num_rows($bookInfoResult) > 0)
+$bookInfoResult = mysqli_query($con, $bookInfoSql);
+if (mysqli_num_rows($bookInfoResult) > 0)
     $book_info = mysqli_fetch_assoc($bookInfoResult);
 
 $book_price = $book_info['price'];
 
-$custID = $_SESSION["id"];
 
-if(isset($_GET['add'])){
-    //get cart ID
-    $getCartSql = "SELECT * FROM shoppingCart WHERE customerID=$custID";
+if (isset($_GET['add'])) {
+    if (isset($_SESSION["id"])) {
+        $custID = $_SESSION["id"];
 
-    $result = mysqli_query($con, $getCartSql);
 
-    if(mysqli_num_rows($result) > 0){
-        $row = mysqli_fetch_assoc($result);
-    }
-    
-    $cart_id = $row['cartID'];
-    $total_items = $row['totalItems'];
-    $total_price = $row['totalPrice'];
+        //get cart ID
+        $getCartSql = "SELECT * FROM shoppingCart WHERE customerID=$custID";
 
-    //get book from shoppingcartdetails
-    $getBookSql = "SELECT * FROM shoppingCartDetails WHERE cartID=$cart_id AND bookID=$book_id";
+        $result = mysqli_query($con, $getCartSql);
 
-    $result = mysqli_query($con, $getBookSql);
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+        }
 
-    //if the book exist, numberofBooks +1
-    if(mysqli_num_rows($result) > 0){
-        $row = mysqli_fetch_assoc($result);
-        $numBooks = $row['numberOfBooks'];
-        
-        $addBookSql = "UPDATE shoppingCartDetails SET numberOfBooks=$numBooks+1
+        $cart_id = $row['cartID'];
+        $total_items = $row['totalItems'];
+        $total_price = $row['totalPrice'];
+
+        //get book from shoppingcartdetails
+        $getBookSql = "SELECT * FROM shoppingCartDetails WHERE cartID=$cart_id AND bookID=$book_id";
+
+        $result = mysqli_query($con, $getBookSql);
+
+        //if the book exist, numberofBooks +1
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $numBooks = $row['numberOfBooks'];
+
+            $addBookSql = "UPDATE shoppingCartDetails SET numberOfBooks=$numBooks+1
         WHERE cartID=$cart_id AND bookID=$book_id";
-    
-        mysqli_query($con, $addBookSql);
 
-        //update the price and items in the cart
-        $addPriceSql = "UPDATE shoppingCart SET totalItems=$total_items+1, totalPrice=$total_price+$book_price
+            mysqli_query($con, $addBookSql);
+
+            //update the price and items in the cart
+            $addPriceSql = "UPDATE shoppingCart SET totalItems=$total_items+1, totalPrice=$total_price+$book_price
         WHERE cartID=$cart_id ";
 
-        mysqli_query($con, $addPriceSql);
-    }
-    //else add the book
-    else{
-        $addBookSql = "INSERT INTO shoppingCartDetails (cartID,bookID,numberOfBooks,totalPriceOfOne) 
+            mysqli_query($con, $addPriceSql);
+        }
+        //else add the book
+        else {
+            $addBookSql = "INSERT INTO shoppingCartDetails (cartID,bookID,numberOfBooks,totalPriceOfOne) 
         VALUES ($cart_id,$book_id,1,$book_price)";
-    
-        mysqli_query($con, $addBookSql);
 
-        //update the price and items in the cart
-        $addPriceSql = "UPDATE shoppingCart SET totalItems=$total_items+1, totalPrice=$total_price+$book_price
+            mysqli_query($con, $addBookSql);
+
+            //update the price and items in the cart
+            $addPriceSql = "UPDATE shoppingCart SET totalItems=$total_items+1, totalPrice=$total_price+$book_price
         WHERE cartID=$cart_id ";
 
-        mysqli_query($con, $addPriceSql);
-    }
+            mysqli_query($con, $addPriceSql);
+        }
 
-    echo '<script>alert("Added to cart")</script>';
+        echo '<script>alert("Added to cart")</script>';
+    } else {
+        echo '<script>alert("Please login to add book to cart.")</script>';
+        echo '<script>window.location.href = "userLogin.php"</script>';        
+    }
 }
 
 ?>
@@ -76,7 +83,7 @@ if(isset($_GET['add'])){
                             <!-- Single -->
                             <div class="single-services d-flex align-items-center mb-0">
                                 <div class="features-img">
-                                    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($book_info['bookImage']).'" height="450" width="400" alt="">' ?>
+                                    <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($book_info['bookImage']) . '" height="450" width="400" alt="">' ?>
                                 </div>
                                 <div class="features-caption">
                                     <h3><?php echo $book_info['bookName']; ?></h3>
@@ -89,7 +96,7 @@ if(isset($_GET['add'])){
                                         <p>Published On: <?php echo $book_info['publishedDate']; ?></p>
                                     </div>
                                     <?php
-                                        echo '<a href="book-details.php?id='.$book_info['bookID'].'&add=true" class="white-btn mr-10">Add to Cart</a>'
+                                    echo '<a href="book-details.php?id=' . $book_info['bookID'] . '&add=true" class="white-btn mr-10">Add to Cart</a>'
                                     ?>
                                     <a href="#" class="border-btn share-btn"><i class="fas fa-share-alt"></i></a>
                                 </div>
@@ -146,7 +153,7 @@ if(isset($_GET['add'])){
     <!-- Books review End -->
 </main>
 <?php
-    include("footer.php")
+include("footer.php")
 ?>
 <!-- Scroll Up -->
 <div id="back-top">
