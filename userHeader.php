@@ -4,6 +4,7 @@ require "internal/dbconnect.php";
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -26,6 +27,7 @@ require "internal/dbconnect.php";
     <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
+
 <body>
     <header>
         <div class="header-area">
@@ -42,25 +44,28 @@ require "internal/dbconnect.php";
                                         </div>
                                         <!-- Search Box -->
                                         <form action="#" class="form-box">
-                                            <input type="text" name="search" onkeyup="showResult(this.value)" id="search" size="10" placeholder="Search book by author or publisher">
+                                            <input type="text" name="search" onkeyup="showResult(this.value)"
+                                                id="search" size="10" placeholder="Search book by author or publisher">
                                             <!-- <div class="search-icon"><i class="ti-search"></i></div> -->
-                                            <div id="results" style="font-size: 20px; z-index: 10; background-color: grey; color: black; overflow: auto; max-height: 400px; min-height: fit-content; min-width: 530px; max-width: fit-content; position: absolute;"></div>
+                                            <div id="results"
+                                                style="font-size: 20px; z-index: 10; background-color: grey; color: black; overflow: auto; max-height: 400px; min-height: fit-content; min-width: 530px; max-width: fit-content; position: absolute;">
+                                            </div>
                                         </form>
                                     </div>
                                     <div class="header-info-right d-flex align-items-center">
-                                        <ul>                                   
-                                            <li class="shopping-card">
-                                            <?php
+                                        <ul>
+                                            <li>
+                                                <?php
                                                 if(isset($_SESSION["id"])){
                                             ?>
                                                 <a href="cart.php"><img src="assets/img/icon/cart.svg" alt=""></a>
-                                            <?php
+                                                <?php
                                                 }else{
                                             ?>
                                                 <a href="userLogin.php"><img src="assets/img/icon/cart.svg" alt=""></a>
-                                            <?php
+                                                <?php
                                                 }
-                                            ?>   
+                                            ?>
                                             </li>
                                             <?php
                                                 if(isset($_SESSION["id"])){
@@ -90,8 +95,8 @@ require "internal/dbconnect.php";
                                 </div>
                                 <!-- Main-menu -->
                                 <div class="main-menu text-center d-none d-lg-block">
-                                    <nav>                                                
-                                        <ul id="navigation">    
+                                    <nav>
+                                        <ul id="navigation">
                                             <li><a href="index.php">Home</a></li>
                                             <li><a href="categories.php">Categories</a></li>
                                             <li><a href="#">Pages</a>
@@ -110,37 +115,37 @@ require "internal/dbconnect.php";
                                         </ul>
                                     </nav>
                                 </div>
-                            </div> 
+                            </div>
                             <!-- Mobile Menu -->
                             <div class="col-xl-12">
                                 <div class="mobile_menu d-block d-lg-none"></div>
                             </div>
                         </div>
-                    </div>                         
+                    </div>
                 </div>
             </div>
         </div>
     </header>
     <script>
-        function showResult(str) {
-            if (str.length==0) {
-                document.getElementById("results").innerHTML="";
-                document.getElementById("results").style.border="0px";
-                return;
-            }
-            var xmlhttp=new XMLHttpRequest();
-            xmlhttp.onreadystatechange=function() {
-                if (this.readyState==4 && this.status==200) {
-                document.getElementById("results").innerHTML=this.responseText;
-                document.getElementById("results").style.border="1px solid #A5ACB2";
-                }
-            }
-            xmlhttp.open("GET","searchData.php?q="+str,true);
-            xmlhttp.send();
+    function showResult(str) {
+        if (str.length == 0) {
+            document.getElementById("results").innerHTML = "";
+            document.getElementById("results").style.border = "0px";
+            return;
         }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("results").innerHTML = this.responseText;
+                document.getElementById("results").style.border = "1px solid #A5ACB2";
+            }
+        }
+        xmlhttp.open("GET", "searchData.php?q=" + str, true);
+        xmlhttp.send();
+    }
     </script>
-<!-- JS here -->
-<!-- Jquery, Popper, Bootstrap -->
+    <!-- JS here -->
+    <!-- Jquery, Popper, Bootstrap -->
     <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="./assets/js/popper.min.js"></script>
@@ -166,8 +171,9 @@ require "internal/dbconnect.php";
     <script src="./assets/js/mail-script.js"></script>
     <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
 
-    <!--  Plugins, main-Jquery -->	
+    <!--  Plugins, main-Jquery -->
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
 </body>
+
 </html>

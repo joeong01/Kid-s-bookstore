@@ -27,27 +27,33 @@
     <!-- header end -->
     <main class="login-bg">
         <?php
-            session_start();
-            require "internal/dbconnect.php";
+        session_start();
+        require "internal/dbconnect.php";
 
-            if(isset($_POST['submit'])){
-                $name = $_POST['name'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
+        if (isset($_POST['submit'])) {
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
 
-                $getUser = mysqli_query($con,"SELECT * FROM customer WHERE email = '$email' ");
-                $queryRun = mysqli_fetch_array($getUser);
+            $getUser = mysqli_query($con, "SELECT * FROM customer WHERE email = '$email' ");
+            $queryRun = mysqli_fetch_array($getUser);
 
-                if($queryRun > 0){
-                    echo "<script> alert('Email already Registered');</script>";
-                }
-                else {
-                    $query = mysqli_query($con, "INSERT INTO customer(full_name, email, password) value('$name', '$email', '$password')");
-                    echo "<script> alert('Registered Successly!');</script>";
-                    header('Location: http://localhost/Kid-s-bookstore/userLogin.php');
-                }
+            if ($queryRun > 0) {
+                echo "<script> alert('Email already Registered');</script>";
+            } else {
+                $getCount = mysqli_query($con, "SELECT COUNT(*) AS total from shoppingCart");
+                $row1 = mysqli_fetch_assoc($getCount);
+                $total = $row1['total'] + 1;
+                $query = mysqli_query($con, "INSERT INTO customer(full_name, email, password) value('$name', '$email', '$password')");
+                $getCID = mysqli_query($con, "SELECT customerID from customer WHERE email = '$email'");
+                $row1 = mysqli_fetch_assoc($getCID);
+                $CID = $row1['customerID'];
+                $query = mysqli_query($con, "INSERT INTO shoppingCart(cartID, customerID, totalItems, totalPrice) value('$total', '$CID', 0, 0)");
                 
+                echo "<script> alert('Registered Successly!');</script>";
+                header('Location: userLogin.php');
             }
+        }
         ?>
         <!-- Register Area Start -->
         <div class="register-form-area">
@@ -66,7 +72,8 @@
                         </div>
                         <div class="single-input-fields">
                             <label>Email Address</label>
-                            <input type="email" placeholder="Email address" id="email" name="email" pattern='[a-zA-Z0-9_]+@+[a-z]+.com' title='Example_1@example.com'  required>
+                            <input type="email" placeholder="Email address" id="email" name="email"
+                                pattern='[a-zA-Z0-9_]+@+[a-z]+.com' title='Example_1@example.com' required>
                         </div>
                         <div class="single-input-fields">
                             <label>Password</label>
@@ -74,7 +81,8 @@
                         </div>
                         <div class="single-input-fields">
                             <label>Confirm Password</label>
-                            <input type="password" placeholder="Confirm Password" id="conPassword" name="conPassword" onkeyup='check();' required>
+                            <input type="password" placeholder="Confirm Password" id="conPassword" name="conPassword"
+                                onkeyup='check();' required>
                             <span id='message'></span>
                         </div>
                     </div>

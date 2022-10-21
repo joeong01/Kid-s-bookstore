@@ -10,10 +10,10 @@
 
     if(mysqli_num_rows($result) > 0){
         $row = mysqli_fetch_assoc($result);
-    }
+    
     
     $cart_id = $row['cartID'];
-    $totalPrice = $row['totalPrice'];
+    $totalPrice = $row['totalPrice'];    
 
     //get book from shoppingcartdetails
     $getBookSql = "SELECT shoppingCartDetails.numberOfBooks, shoppingCartDetails.totalPriceOfOne, shoppingCartDetails.bookID, books.bookImage , books.bookName 
@@ -22,10 +22,13 @@
     WHERE cartID=$cart_id";
 
     $result = mysqli_query($con, $getBookSql);
-
+    }else{
+            $totalPrice = 0;
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -47,41 +50,42 @@
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
 
-<main>
-    <!-- Hero area Start-->
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="slider-area">
-                    <div class="slider-height2 slider-bg5 d-flex align-items-center justify-content-center">
-                        <div class="hero-caption hero-caption2">
-                            <h2>Cart</h2>
+    <main>
+        <!-- Hero area Start-->
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="slider-area">
+                        <div class="slider-height2 slider-bg5 d-flex align-items-center justify-content-center">
+                            <div class="hero-caption hero-caption2">
+                                <h2>Cart</h2>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> 
-    </div>
-    <!--  Hero area End -->
-    <!--================Cart Area =================-->
-    <section class="cart_area section-padding">
-        <div class="container">
-            <div class="cart_inner">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Options</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
+        </div>
+        <!--  Hero area End -->
+        <!--================Cart Area =================-->
+        <section class="cart_area section-padding">
+            <div class="container">
+                <div class="cart_inner">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Options</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
                             if(mysqli_num_rows($result) > 0){
                                 while($row = mysqli_fetch_assoc($result)){
                                     echo '<tr>'
@@ -111,7 +115,7 @@
                                 }
                             }
                             ?>
-                            <!-- <tr class="bottom_button">
+                                <!-- <tr class="bottom_button">
                                 <td>
                                     <a class="btn" href="#">Update Cart</a>
                                 </td>
@@ -123,18 +127,18 @@
                                     </div>
                                 </td>
                             </tr> -->
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <h5>Subtotal</h5>
-                                </td>
-                                <td>
-                                    <?php echo '<h5>RM '.$totalPrice.' </h5>' ?>
-                                </td>
-                            </tr>
-                            <!-- <tr class="shipping_area">
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <h5>Subtotal</h5>
+                                    </td>
+                                    <td>
+                                        <?php echo '<h5>RM '.$totalPrice.' </h5>' ?>
+                                    </td>
+                                </tr>
+                                <!-- <tr class="shipping_area">
                                 <td></td>
                                 <td></td> -->
                                 <!-- <td>
@@ -142,7 +146,7 @@
                                 </td>
                                 <td>
                                     <div class="shipping_box"> -->
-                                        <!-- <form>
+                                <!-- <form>
                                             Flat Rate: $5.00
                                             <input type="radio" aria-label="Radio button for following text input">
                                             
@@ -159,7 +163,7 @@
                                             Calculate Shipping
                                             <i class="fa fa-caret-down" aria-hidden="true"></i>
                                         </h6> -->
-                                        <!-- <select class="shipping_select">
+                                <!-- <select class="shipping_select">
                                             <option value="1">Bangladesh</option>
                                             <option value="2">India</option>
                                             <option value="4">Pakistan</option>
@@ -171,59 +175,60 @@
                                         </select>
                                         <input class="post_code" type="text" placeholder="Postcode/Zipcode" />
                                         <a class="btn" href="#">Update Details</a> -->
-                                    <!-- </div>
+                                <!-- </div>
                                 </td> -->
-                            <!-- </tr> -->
-                        </tbody>
-                    </table>
-                    <div class="checkout_btn_inner float-right">
-                        <a class="btn" href="index.php">Continue Shopping</a>
-                        <a class="btn checkout_btn" href="checkout.php">Proceed to checkout</a>
+                                <!-- </tr> -->
+                            </tbody>
+                        </table>
+                        <div class="checkout_btn_inner float-right">
+                            <a class="btn" href="index.php">Continue Shopping</a>
+                            <a class="btn checkout_btn" href="checkout.php">Proceed to checkout</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--================End Cart Area =================-->
-</main>
-<?php
+        </section>
+        <!--================End Cart Area =================-->
+    </main>
+    <?php
     include("footer.php")
 ?>
 
-<!-- Scroll Up -->
-<div id="back-top" >
-    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-</div>
+    <!-- Scroll Up -->
+    <div id="back-top">
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
 
-<!-- JS here -->
-<!-- Jquery, Popper, Bootstrap -->
-<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
-<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-<script src="./assets/js/popper.min.js"></script>
-<script src="./assets/js/bootstrap.min.js"></script>
+    <!-- JS here -->
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
 
-<!-- Slick-slider , Owl-Carousel ,slick-nav -->
-<script src="./assets/js/owl.carousel.min.js"></script>
-<script src="./assets/js/slick.min.js"></script>
-<script src="./assets/js/jquery.slicknav.min.js"></script>
+    <!-- Slick-slider , Owl-Carousel ,slick-nav -->
+    <script src="./assets/js/owl.carousel.min.js"></script>
+    <script src="./assets/js/slick.min.js"></script>
+    <script src="./assets/js/jquery.slicknav.min.js"></script>
 
-<!--wow , counter , waypoint, Nice-select -->
-<script src="./assets/js/wow.min.js"></script>
-<script src="./assets/js/jquery.magnific-popup.js"></script>
-<script src="./assets/js/jquery.nice-select.min.js"></script>
-<script src="./assets/js/jquery.counterup.min.js"></script>
-<script src="./assets/js/waypoints.min.js"></script>
-<script src="./assets/js/price_rangs.js"></script>
+    <!--wow , counter , waypoint, Nice-select -->
+    <script src="./assets/js/wow.min.js"></script>
+    <script src="./assets/js/jquery.magnific-popup.js"></script>
+    <script src="./assets/js/jquery.nice-select.min.js"></script>
+    <script src="./assets/js/jquery.counterup.min.js"></script>
+    <script src="./assets/js/waypoints.min.js"></script>
+    <script src="./assets/js/price_rangs.js"></script>
 
-<!-- contact js -->
-<script src="./assets/js/contact.js"></script>
-<script src="./assets/js/jquery.form.js"></script>
-<script src="./assets/js/jquery.validate.min.js"></script>
-<script src="./assets/js/mail-script.js"></script>
-<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+    <!-- contact js -->
+    <script src="./assets/js/contact.js"></script>
+    <script src="./assets/js/jquery.form.js"></script>
+    <script src="./assets/js/jquery.validate.min.js"></script>
+    <script src="./assets/js/mail-script.js"></script>
+    <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
 
-<!--  Plugins, main-Jquery -->	
-<script src="./assets/js/plugins.js"></script>
-<script src="./assets/js/main.js"></script>
+    <!--  Plugins, main-Jquery -->
+    <script src="./assets/js/plugins.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
+
 </html>

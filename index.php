@@ -16,7 +16,8 @@
                                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
                                         <div class="hero-caption text-center">
                                             <h1 data-animation="fadeInUp" data-delay=".4s">Science</h1>
-                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=101" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                            <a href="categories.php?categories%5B%5D=1" class="btn hero-btn"
+                                                data-animation="bounceIn" data-delay=".8s">Browse Store</a>
                                         </div>
                                     </div>
                                 </div>
@@ -29,7 +30,9 @@
                                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
                                         <div class="hero-caption text-center">
                                             <h1 data-animation="fadeInUp" data-delay=".4s">Plant</h1>
-                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=102" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                            <a href="categories.php?categories%5B%5D=2" class="btn hero-btn"
+                                                data-animation="bounceIn" data-delay=".8s">Browse
+                                                Store</a>
                                         </div>
                                     </div>
                                 </div>
@@ -42,7 +45,9 @@
                                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
                                         <div class="hero-caption text-center">
                                             <h1 data-animation="fadeInUp" data-delay=".4s">Language</h1>
-                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=103" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                            <a href="categories.php?categories%5B%5D=3" class="btn hero-btn"
+                                                data-animation="bounceIn" data-delay=".8s">Browse
+                                                Store</a>
                                         </div>
                                     </div>
                                 </div>
@@ -54,7 +59,9 @@
                                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
                                         <div class="hero-caption text-center">
                                             <h1 data-animation="fadeInUp" data-delay=".4s">Comic</h1>
-                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=104" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                            <a href="categories.php?categories%5B%5D=4" class="btn hero-btn"
+                                                data-animation="bounceIn" data-delay=".8s">Browse
+                                                Store</a>
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +73,9 @@
                                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-7">
                                         <div class="hero-caption text-center">
                                             <h1 data-animation="fadeInUp" data-delay=".4s">Animal</h1>
-                                            <a href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=105" class="btn hero-btn"  data-animation="bounceIn" data-delay=".8s">Browse Store</a>
+                                            <a href="categories.php?categories%5B%5D=5" class="btn hero-btn"
+                                                data-animation="bounceIn" data-delay=".8s">Browse
+                                                Store</a>
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +111,7 @@
                             <div class="properties-card">
                                 <div class="properties-img">
                                     <?php echo "
-                                        <a href='http://localhost/Kid-s-bookstore/book-details.php?id=$item[bookID]'>";
+                                        <a href='book-details.php?id=$item[bookID]'>";
                                             echo '<img height=300px width=200px src= "data:image/jpeg;base64,'. base64_encode($item['bookImage']).'"/>';
                                         echo "</a>";
                                     ?>
@@ -149,7 +158,7 @@
                             <div class="properties-card">
                                 <div class="properties-img">
                                     <?php echo "
-                                        <a href='http://localhost/Kid-s-bookstore/book-details.php?id=$item[bookID]'>";
+                                        <a href='book-details.php?id=$item[bookID]'>";
                                             echo '<img height=300px width=200px src= "data:image/jpeg;base64,'. base64_encode($item['bookImage']).'"/>';
                                         echo "</a>";
                                     ?>
@@ -205,8 +214,9 @@
 <script src="./assets/js/mail-script.js"></script>
 <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
 
-<!--  Plugins, main-Jquery -->	
+<!--  Plugins, main-Jquery -->
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/main.js"></script>
 </body>
+
 </html>

@@ -32,20 +32,15 @@
                             <div class="footer-tittle">
                                 <h4>Book Category</h4>
                                 <ul>
-                                    <li><a
-                                            href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=104">Animal</a>
+                                    <li><a href="categories.php?categories%5B%5D=4">Animal</a>
                                     </li>
-                                    <li><a
-                                            href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=105">Comic</a>
+                                    <li><a href="categories.php?categories%5B%5D=5">Comic</a>
                                     </li>
-                                    <li><a
-                                            href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=103">Language</a>
+                                    <li><a href="categories.php?categories%5B%5D=3">Language</a>
                                     </li>
-                                    <li><a
-                                            href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=102">Plant</a>
+                                    <li><a href="categories.php?categories%5B%5D=2">Plant</a>
                                     </li>
-                                    <li><a
-                                            href="http://localhost/Kid-s-bookstore/categories.php?categories%5B%5D=101">Science</a>
+                                    <li><a href="categories.php?categories%5B%5D=1">Science</a>
                                     </li>
                                 </ul>
                             </div>

@@ -14,7 +14,6 @@ if (isset($_GET['add'])) {
     if (isset($_SESSION["id"])) {
         $custID = $_SESSION["id"];
 
-
         //get cart ID
         $getCartSql = "SELECT * FROM shoppingCart WHERE customerID=$custID";
 
@@ -22,7 +21,6 @@ if (isset($_GET['add'])) {
 
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
-        }
 
         $cart_id = $row['cartID'];
         $total_items = $row['totalItems'];
@@ -64,6 +62,7 @@ if (isset($_GET['add'])) {
         }
 
         echo '<script>alert("Added to cart")</script>';
+  }      
     } else {
         echo '<script>alert("Please login to add book to cart.")</script>';
         echo '<script>window.location.href = "userLogin.php"</script>';        
