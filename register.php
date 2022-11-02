@@ -80,7 +80,7 @@
                     </div>
                     <!-- form Footer -->
                     <div class="register-footer">
-                        <p> Already have an account? <a href="login.php"> Login</a> here</p>
+                        <p> Already have an account? <a href="userLogin.php"> Login</a> here</p>
                         <button type="submit" name="submit" class="submit-btn3">Sign Up</button>
                     </div>
                 </form>
