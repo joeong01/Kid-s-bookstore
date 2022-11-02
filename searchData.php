@@ -15,9 +15,9 @@ if (strlen($q)>0) {
   foreach($getBook as $item){
     if (stripos($item['bookName'], $q) || stripos($item['bookAuthor'], $q)) {
       if ($hint=="") {
-        $hint="<a href='http://localhost/Kid-s-bookstore/book-details.php?id=$item[bookID]'>" . $item['bookName'] . " by " . $item['bookAuthor'] ."</a>";
+        $hint="<a href='book-details.php?id=$item[bookID]'>" . $item['bookName'] . " by " . $item['bookAuthor'] ."</a>";
       } else {
-        $hint=$hint."</br></br><a href='http://localhost/Kid-s-bookstore/book-details.php?id=$item[bookID]'>" . $item['bookName'] . " by " . $item['bookAuthor'] ."</a>";
+        $hint=$hint."</br></br><a href='book-details.php?id=$item[bookID]'>" . $item['bookName'] . " by " . $item['bookAuthor'] ."</a>";
       }
     }
   }

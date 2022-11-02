@@ -7,6 +7,6 @@ echo "
     </script>"
     ;
 
-    header('Location: http://localhost/Kid-s-bookstore/index.php');
+    header('Location: index.php');
 session_destroy();
 ?>
