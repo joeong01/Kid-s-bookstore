@@ -4,9 +4,8 @@ session_unset();
 echo "
     <script>
         alert('Log Out and continued as guest');
-    </script>"
-    ;
+    </script>";
 
-    header('Location: index.php');
+    header('Location: http://localhost/Kid-s-bookstore/index.php');
 session_destroy();
 ?>
