@@ -44,6 +44,8 @@
                 else {
                     $query = mysqli_query($con, "INSERT INTO customer(full_name, email, password) value('$name', '$email', '$password')");
                     echo "<script> alert('Registered Successly!');</script>";
+                    $query = mysqli_query($con, "INSERT INTO shoppingcart(totalItems,totalPrice) value(NULL, NULL)");
+                    $query = mysqli_query($con, "UPDATE shoppingcart SET customerID = cartID WHERE customerID IS NULL");
                     header('Location: http://localhost/Kid-s-bookstore/userLogin.php');
                 }
                 
