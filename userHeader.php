@@ -102,10 +102,10 @@ require "internal/dbconnect.php";
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
                                                     <li><a href="cart.php">Cart</a></li>
-                                                    <li><a href="checkout.php">Checkout</a></li>
                                                     <?php
                                                         if(isset($_SESSION["id"])){
                                                     ?>
+                                                    <li><a href="checkout.php">Checkout</a></li>
                                                     <li><a href="editProfile.php">Edit Profile</a></li>
                                                     <?php
                                                         }

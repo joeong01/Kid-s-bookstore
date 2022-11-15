@@ -134,7 +134,14 @@
                                 <input type="radio" id="mastercard" name="cardType" value="mastercard">
                                 <label for="css">MasterCard</label><br><br><br>
 
-                                <input class="btn w-100" type="submit" value="Proceed to Payment">
+                                <?php
+                                    if(mysqli_num_rows($result) > 0){
+                                        echo "<input class='btn w-100' type='submit' value='Proceed to Payment'>";
+                                    }
+                                    else{
+                                        echo "<input class='btn w-100' type='submit' value='Proceed to Payment' disabled>";
+                                    }
+                                ?>
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account">
                                         <h3>Shipping Details</h3>
